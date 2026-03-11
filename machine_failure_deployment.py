@@ -11,14 +11,14 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-model = joblib.load("machine_failure_prediction_model.pkl")
+model = joblib.load('machine_failure_predictionmodel.pkl')
 
 st.title('Machine Failure Prediction system')
 
 st.write("you can enter the data sensor and check whether your machine will work or fail under certain condition")
 
 footfall = st.number_input('footfall')
-tempMOde = st.number_input('tempMOde')
+tempMode = st.number_input('tempMode')
 AQ = st.number_input('AQ')
 USS = st.number_input('USS')
 CS = st.number_input('CS')
@@ -29,18 +29,19 @@ Temperature = st.number_input('Temperature')
 
 df = pd.DataFrame({
    "footfall": [footfall],
-   "tempMOde": [tempMOde],
-   "AQ" : [AQ],
-   "USS" : [USS],
-   "CS" : [CS],
-   "VOC" : [VOC],
-   "RP" : [RP],
-   "IP" : [IP],
-   "Temperature" : [Temperature]
+   "tempMode": [tempMode],
+   "AQ": [AQ],
+   "USS": [USS],
+   "CS": [CS],
+   "VOC": [VOC],
+   "RP": [RP],
+   "IP": [IP],
+   "Temperature": [Temperature]
 })
 
 if st.button('Predict'):
     prediction = model.predict(df)
+    
     if prediction[0] == 1:
         st.error('Machine will fail')
     else:
