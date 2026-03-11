@@ -11,7 +11,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-model = joblib.load('machine_failure_predictionmodel.pkl')
+model = joblib.load('./machine_failure_predictionmodel.pkl')
 
 st.title('Machine Failure Prediction system')
 
